@@ -1,8 +1,12 @@
 package Principal;
 
+import View.TelaPrincipal;
+import javax.swing.JFrame;
+
 public class Main {
 
     public static void main(String[] args) {
-        //All the code comes here
+        TelaPrincipal objetoTela = new TelaPrincipal();
+        objetoTela.setVisible(true);
     }
 }
