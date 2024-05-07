@@ -1,7 +1,6 @@
 package Principal;
 
 import View.TelaPrincipal;
-import javax.swing.JFrame;
 
 public class Main {
 
