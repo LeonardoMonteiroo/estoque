@@ -82,18 +82,18 @@ public class Produto {
     //Fim dos métodos getters e setters
 
     //
-    public ArrayList getProdutos() {
-        return dao.getProdutos();
+    public ArrayList getProdutosList() {
+        return dao.getProdutosList();
     }
 
     //Retorna o maior ID
-    public int maiorID() throws SQLException {
-        return dao.maiorID();
+    public int getMaxID() throws SQLException {
+        return dao.getMaxID();
     }
 
     //Cadastra novo produto
     public boolean InsertProdutoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, int data_cadastro) throws SQLException {
-        int id = this.maiorID() + 1;
+        int id = this.getMaxID() + 1;
         Produto objeto = new Produto(id_produto, nome_produto, descricao_produto, quantidade_estoque, preco, data_cadastro);
         dao.InsertProdutoBD(objeto);
         return true;
@@ -113,8 +113,8 @@ public class Produto {
     }
 
     //Retorna um produto pelo seu campo ID
-    public Produto carregaAluno(int id) {
-        dao.carregaProduto(id);
+    public Produto getProduto(int id) {
+        dao.getProduto(id);
         return null;
     }
 }

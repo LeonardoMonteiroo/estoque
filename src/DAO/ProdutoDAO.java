@@ -14,7 +14,7 @@ public class ProdutoDAO {
     }
 
     //DriverManager
-    public Connection getConexao() {
+    public Connection getConnection() {
 
         Connection connection = null;
 
@@ -44,13 +44,13 @@ public class ProdutoDAO {
     }
 
     //Retorna uma ArrayList com os produtos
-    public ArrayList getProdutos() {
+    public ArrayList getProdutosList() {
 
         produtos.clear();
 
         try {
 
-            Statement stmt = this.getConexao().createStatement();
+            Statement stmt = this.getConnection().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_produto");
             while (res.next()) {
 
@@ -76,11 +76,11 @@ public class ProdutoDAO {
     }
 
     //Retorna o maior ID
-    public int maiorID() throws SQLException {
+    public int getMaxID() throws SQLException {
 
         int maiorID = 0;
         try {
-            Statement stmt = this.getConexao().createStatement();
+            Statement stmt = this.getConnection().createStatement();
             ResultSet res = stmt.executeQuery("SELECT MAX(id_produto) id FROM tb_produto");
             res.next();
             maiorID = res.getInt("id_produto");
@@ -99,7 +99,7 @@ public class ProdutoDAO {
         String sql = "INSERT INTO tb_produto(id_produto, nome_produto, descricao_produto, quantidade_estoque, preco, data_cadastro) VALUES(?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
             stmt.setInt(1, objeto.getId_produto());
             stmt.setString(2, objeto.getNome_produto());
@@ -122,7 +122,7 @@ public class ProdutoDAO {
     //Deleta um produto específico pelo seu campo ID
     public boolean DeleteProdutoBD(int id) {
         try {
-            Statement stmt = this.getConexao().createStatement();
+            Statement stmt = this.getConnection().createStatement();
             stmt.executeUpdate("DELETE FROM tb_produto WHERE id_produto = " + id);
             stmt.close();
 
@@ -139,7 +139,7 @@ public class ProdutoDAO {
         String sql = "UPDATE tb_produto set nome_produto = ?, descricao_produto = ?, quantidade_estoque = ?, preco = ?, data_cadastro = ? WHERE id_produto = ?";
 
         try {
-            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
             stmt.setInt(1, objeto.getId_produto());
             stmt.setString(2, objeto.getNome_produto());
@@ -159,13 +159,13 @@ public class ProdutoDAO {
     }
 
     //Retorna um produto pelo seu campo ID
-    public Produto carregaProduto(int id) {
+    public Produto getProduto(int id) {
 
         Produto objeto = new Produto();
         objeto.setId_produto(id);
 
         try {
-            Statement stmt = this.getConexao().createStatement();
+            Statement stmt = this.getConnection().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_produto WHERE id_produto = " + id);
             res.next();
 
