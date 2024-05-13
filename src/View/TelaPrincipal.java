@@ -42,7 +42,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estoque legal");
-        setMixingCutoutShape(null);
         setPreferredSize(new java.awt.Dimension(99999999, 99999999));
 
         jMenu4.setText("Produto");
