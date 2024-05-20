@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ProdutoDAO {
 
-    public static ArrayList<Produto> produtos = new ArrayList<Produto>();
+    public static ArrayList<Produto> produtos = new ArrayList<>();
 
     //Construtor vazio
     public ProdutoDAO() {
@@ -23,11 +23,11 @@ public class ProdutoDAO {
             String driver = "com.mysql.cj.jdbc.Driver";
             Class.forName(driver);
 
-            String server = "";
-            String database = "";
+            String server = "localhost";
+            String database = "db_a3";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
-            String user = "";
-            String password = "";
+            String user = "root";
+            String password = "16660064087";
 
             connection = DriverManager.getConnection(url, user, password);
 
@@ -59,7 +59,7 @@ public class ProdutoDAO {
                 String descricao_produto = res.getString("descricao_produto");
                 int quantidade_estoque = res.getInt("quantidade_estoque");
                 float preco = res.getFloat("preco");
-                int data_cadastro = res.getInt("data_cadastro");
+                Date data_cadastro = res.getDate("data_cadastro");
 
                 Produto objeto = new Produto(id_produto, nome_produto, descricao_produto, quantidade_estoque, preco, data_cadastro);
 
@@ -106,7 +106,7 @@ public class ProdutoDAO {
             stmt.setString(3, objeto.getDescricao_produto());
             stmt.setInt(4, objeto.getQuantidade_estoque());
             stmt.setFloat(5, objeto.getPreco());
-            stmt.setInt(6, objeto.getData_cadastro());
+            stmt.setDate(6, new java.sql.Date(objeto.getData_cadastro().getTime()));
 
             stmt.execute();
             stmt.close();
@@ -146,7 +146,7 @@ public class ProdutoDAO {
             stmt.setString(3, objeto.getDescricao_produto());
             stmt.setInt(4, objeto.getQuantidade_estoque());
             stmt.setFloat(5, objeto.getPreco());
-            stmt.setInt(6, objeto.getData_cadastro());
+            stmt.setDate(6, new java.sql.Date(objeto.getData_cadastro().getTime()));
 
             stmt.execute();
             stmt.close();
@@ -173,7 +173,7 @@ public class ProdutoDAO {
             objeto.setDescricao_produto(res.getString("descricao_produto"));
             objeto.setQuantidade_estoque(res.getInt("quantidade_estoque"));
             objeto.setPreco(res.getFloat("preco"));
-            objeto.setData_cadastro(res.getInt("data_cadastro"));
+            objeto.setData_cadastro(res.getDate("data_cadastro"));
 
             stmt.close();
 
