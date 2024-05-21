@@ -13,73 +13,91 @@ public class CadastroProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        Field_QuantidadeEmEstoque = new javax.swing.JTextField();
+        Scroll_DescricaoDoProduto = new javax.swing.JScrollPane();
+        Field_DescricaoDoProduto = new javax.swing.JTextArea();
+        Field_NomeDoProduto = new javax.swing.JTextField();
+        Field_Preco = new javax.swing.JTextField();
+        NomeDoProduto = new javax.swing.JLabel();
+        DescricaoDoProduto = new javax.swing.JLabel();
+        Preco = new javax.swing.JLabel();
+        QuantidadeEmEstoque = new javax.swing.JLabel();
+        Buttom_Cancelar = new javax.swing.JButton();
+        AdicionarEstoque = new javax.swing.JCheckBox();
+        Buttom_Confirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produto");
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusCycleRoot(false);
-        setMaximumSize(null);
         setMinimumSize(null);
         setResizable(false);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Scroll_DescricaoDoProduto.setMaximumSize(null);
+        Scroll_DescricaoDoProduto.setMinimumSize(null);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Field_DescricaoDoProduto.setColumns(20);
+        Field_DescricaoDoProduto.setLineWrap(true);
+        Field_DescricaoDoProduto.setRows(5);
+        Field_DescricaoDoProduto.setTabSize(0);
+        Field_DescricaoDoProduto.setToolTipText("Máximo de 255 caracteres");
+        Field_DescricaoDoProduto.setWrapStyleWord(true);
+        Field_DescricaoDoProduto.setMaximumSize(null);
+        Field_DescricaoDoProduto.setMinimumSize(null);
+        Field_DescricaoDoProduto.setName(""); // NOI18N
+        Scroll_DescricaoDoProduto.setViewportView(Field_DescricaoDoProduto);
+        Field_DescricaoDoProduto.getAccessibleContext().setAccessibleName("JTextArea-DecricaoDoProduto");
+        Field_DescricaoDoProduto.getAccessibleContext().setAccessibleDescription("");
+
+        Field_NomeDoProduto.setToolTipText("Máximo de 50 caracteres");
+        Field_NomeDoProduto.setMaximumSize(null);
+        Field_NomeDoProduto.setMinimumSize(null);
+        Field_NomeDoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                Field_NomeDoProdutoActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        Field_Preco.setMaximumSize(null);
+        Field_Preco.setMinimumSize(null);
+        Field_Preco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                Field_PrecoActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Nome do Produto");
+        NomeDoProduto.setText("Nome do Produto");
 
-        jLabel2.setText("Descrição do Produto");
+        DescricaoDoProduto.setText("Descrição do Produto");
 
-        jLabel3.setText("Preço");
+        Preco.setText("Preço");
 
-        jLabel4.setText("Quantidade em estoque");
+        QuantidadeEmEstoque.setText("Quantidade em estoque");
 
-        jButton3.setText("Confirmar");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Buttom_Cancelar.setText("Cancelar");
+        Buttom_Cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Buttom_Cancelar.setMaximumSize(new java.awt.Dimension(83, 23));
+        Buttom_Cancelar.setMinimumSize(new java.awt.Dimension(83, 23));
+        Buttom_Cancelar.setPreferredSize(new java.awt.Dimension(83, 23));
+        Buttom_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Buttom_CancelarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Cancelar");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        AdicionarEstoque.setText("Adicionar estoque?");
+        AdicionarEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                AdicionarEstoqueActionPerformed(evt);
             }
         });
 
-        jCheckBox1.setText("Adicionar estoque?");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        Buttom_Confirmar.setText("Confirmar");
+        Buttom_Confirmar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Buttom_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                Buttom_ConfirmarActionPerformed(evt);
             }
         });
 
@@ -88,25 +106,25 @@ public class CadastroProduto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(75, 75, 75)
-                .addComponent(jButton4)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addComponent(Buttom_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(Buttom_Confirmar)
+                .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField1)
+                    .addComponent(Preco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DescricaoDoProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NomeDoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field_NomeDoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Scroll_DescricaoDoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field_Preco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field_QuantidadeEmEstoque)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(QuantidadeEmEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AdicionarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(13, 13, 13))
         );
@@ -114,53 +132,79 @@ public class CadastroProduto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addComponent(NomeDoProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Field_NomeDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(DescricaoDoProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Scroll_DescricaoDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(Preco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Field_Preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jCheckBox1))
+                    .addComponent(QuantidadeEmEstoque)
+                    .addComponent(AdicionarEstoque))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(Field_QuantidadeEmEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buttom_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Buttom_Confirmar))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        Field_QuantidadeEmEstoque.getAccessibleContext().setAccessibleName("jTextField_QuantidadeEmEstoque");
+        Field_QuantidadeEmEstoque.getAccessibleContext().setAccessibleParent(Field_QuantidadeEmEstoque);
+        Scroll_DescricaoDoProduto.getAccessibleContext().setAccessibleName("JScrollPane_DescricaoDoProduto");
+        Scroll_DescricaoDoProduto.getAccessibleContext().setAccessibleParent(Scroll_DescricaoDoProduto);
+        Field_NomeDoProduto.getAccessibleContext().setAccessibleName("JTextField_NomeDoProduto");
+        Field_NomeDoProduto.getAccessibleContext().setAccessibleDescription("");
+        Field_NomeDoProduto.getAccessibleContext().setAccessibleParent(Field_NomeDoProduto);
+        Field_Preco.getAccessibleContext().setAccessibleName("jTextField_Preco");
+        Field_Preco.getAccessibleContext().setAccessibleParent(Field_Preco);
+        NomeDoProduto.getAccessibleContext().setAccessibleName("jLabel_NomeDoProduto");
+        NomeDoProduto.getAccessibleContext().setAccessibleParent(NomeDoProduto);
+        DescricaoDoProduto.getAccessibleContext().setAccessibleName("jLabel_DescricaoDoProduto");
+        DescricaoDoProduto.getAccessibleContext().setAccessibleParent(DescricaoDoProduto);
+        Preco.getAccessibleContext().setAccessibleName("jLabel_Preco");
+        Preco.getAccessibleContext().setAccessibleParent(Preco);
+        QuantidadeEmEstoque.getAccessibleContext().setAccessibleName("jLabel_QuantidadeEmEstoque");
+        QuantidadeEmEstoque.getAccessibleContext().setAccessibleParent(QuantidadeEmEstoque);
+        Buttom_Cancelar.getAccessibleContext().setAccessibleName("jButtom_Cancelar");
+        Buttom_Cancelar.getAccessibleContext().setAccessibleParent(Buttom_Cancelar);
+        AdicionarEstoque.getAccessibleContext().setAccessibleName("JChechBox_AdicionarEstoque");
+        AdicionarEstoque.getAccessibleContext().setAccessibleParent(AdicionarEstoque);
+        Buttom_Confirmar.getAccessibleContext().setAccessibleName("Confirmar");
+        Buttom_Confirmar.getAccessibleContext().setAccessibleParent(Buttom_Confirmar);
+
+        getAccessibleContext().setAccessibleName("CadastroDeProduto");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void Field_NomeDoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Field_NomeDoProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_Field_NomeDoProdutoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void Buttom_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buttom_CancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_Buttom_CancelarActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void Field_PrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Field_PrecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_Field_PrecoActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void AdicionarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarEstoqueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_AdicionarEstoqueActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Buttom_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buttom_ConfirmarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_Buttom_ConfirmarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -195,18 +239,17 @@ public class CadastroProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JCheckBox AdicionarEstoque;
+    private javax.swing.JButton Buttom_Cancelar;
+    private javax.swing.JButton Buttom_Confirmar;
+    private javax.swing.JLabel DescricaoDoProduto;
+    private javax.swing.JTextArea Field_DescricaoDoProduto;
+    private javax.swing.JTextField Field_NomeDoProduto;
+    private javax.swing.JTextField Field_Preco;
+    private javax.swing.JTextField Field_QuantidadeEmEstoque;
+    private javax.swing.JLabel NomeDoProduto;
+    private javax.swing.JLabel Preco;
+    private javax.swing.JLabel QuantidadeEmEstoque;
+    private javax.swing.JScrollPane Scroll_DescricaoDoProduto;
     // End of variables declaration//GEN-END:variables
 }
