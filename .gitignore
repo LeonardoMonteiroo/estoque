@@ -7,3 +7,8 @@ dist/
 nbdist/
 .nb-gradle/
 /.idea
+/nbproject
+/out
+*.iml
+*.mf
+*.xml
