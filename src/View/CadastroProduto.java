@@ -1,5 +1,7 @@
 package View;
 
+import Utils.MaxChar;
+
 /**
  *
  * @author gabri
@@ -47,8 +49,9 @@ public class CadastroProduto extends javax.swing.JFrame {
         Field_DescricaoDoProduto.setMinimumSize(null);
         Field_DescricaoDoProduto.setName(""); // NOI18N
         Scroll_DescricaoDoProduto.setViewportView(Field_DescricaoDoProduto);
-        Field_DescricaoDoProduto.getAccessibleContext().setAccessibleName("JTextArea-DecricaoDoProduto");
+        Field_DescricaoDoProduto.getAccessibleContext().setAccessibleName("");
         Field_DescricaoDoProduto.getAccessibleContext().setAccessibleDescription("");
+        Field_DescricaoDoProduto.setDocument(new MaxChar(255));
 
         Field_NomeDoProduto.setToolTipText("Máximo de 50 caracteres");
         Field_NomeDoProduto.setMaximumSize(null);
@@ -160,9 +163,9 @@ public class CadastroProduto extends javax.swing.JFrame {
         Field_QuantidadeEmEstoque.getAccessibleContext().setAccessibleParent(Field_QuantidadeEmEstoque);
         Scroll_DescricaoDoProduto.getAccessibleContext().setAccessibleName("JScrollPane_DescricaoDoProduto");
         Scroll_DescricaoDoProduto.getAccessibleContext().setAccessibleParent(Scroll_DescricaoDoProduto);
-        Field_NomeDoProduto.getAccessibleContext().setAccessibleName("JTextField_NomeDoProduto");
+        Field_NomeDoProduto.getAccessibleContext().setAccessibleName("");
         Field_NomeDoProduto.getAccessibleContext().setAccessibleDescription("");
-        Field_NomeDoProduto.getAccessibleContext().setAccessibleParent(Field_NomeDoProduto);
+        Field_NomeDoProduto.setDocument(new MaxChar(50));
         Field_Preco.getAccessibleContext().setAccessibleName("jTextField_Preco");
         Field_Preco.getAccessibleContext().setAccessibleParent(Field_Preco);
         NomeDoProduto.getAccessibleContext().setAccessibleName("jLabel_NomeDoProduto");
@@ -177,7 +180,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         Buttom_Cancelar.getAccessibleContext().setAccessibleParent(Buttom_Cancelar);
         AdicionarEstoque.getAccessibleContext().setAccessibleName("JChechBox_AdicionarEstoque");
         AdicionarEstoque.getAccessibleContext().setAccessibleParent(AdicionarEstoque);
-        Buttom_Confirmar.getAccessibleContext().setAccessibleName("Confirmar");
         Buttom_Confirmar.getAccessibleContext().setAccessibleParent(Buttom_Confirmar);
 
         getAccessibleContext().setAccessibleName("CadastroDeProduto");
@@ -186,6 +188,8 @@ public class CadastroProduto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void Field_NomeDoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Field_NomeDoProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Field_NomeDoProdutoActionPerformed
