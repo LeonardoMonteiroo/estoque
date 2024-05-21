@@ -4,6 +4,7 @@ import DAO.ProdutoDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Produto {
 
@@ -13,7 +14,7 @@ public class Produto {
     private String descricao_produto;
     private int quantidade_estoque;
     private float preco;
-    private int data_cadastro;
+    private Date data_cadastro;
 
     //Construtor vazio
     public Produto() {
@@ -21,7 +22,7 @@ public class Produto {
     }
 
     //Construtor
-    public Produto(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, int data_cadastro) {
+    public Produto(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, Date data_cadastro) {
         this.id_produto = id_produto;
         this.nome_produto = nome_produto;
         this.descricao_produto = descricao_produto;
@@ -72,11 +73,11 @@ public class Produto {
         this.preco = preco;
     }
 
-    public int getData_cadastro() {
+    public Date getData_cadastro() {
         return data_cadastro;
     }
 
-    public void setData_cadastro(int data_cadastro) {
+    public void setData_cadastro(Date data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
     //Fim dos métodos getters e setters
@@ -92,7 +93,7 @@ public class Produto {
     }
 
     //Cadastra novo produto
-    public boolean InsertProdutoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, int data_cadastro) throws SQLException {
+    public boolean InsertProdutoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, Date data_cadastro) throws SQLException {
         int id = this.getMaxID() + 1;
         Produto objeto = new Produto(id_produto, nome_produto, descricao_produto, quantidade_estoque, preco, data_cadastro);
         dao.InsertProdutoBD(objeto);
@@ -106,7 +107,7 @@ public class Produto {
     }
 
     //Edita um produto específico pelo seu campo ID
-    public boolean UpdateAlunoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, int data_cadastro) {
+    public boolean UpdateAlunoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, Date data_cadastro) {
         Produto objeto = new Produto(id_produto, nome_produto, descricao_produto, quantidade_estoque, preco, data_cadastro);
         dao.UpdateProdutoBD(objeto);
         return true;
