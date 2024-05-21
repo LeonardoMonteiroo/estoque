@@ -1,6 +1,7 @@
 /.idea
 /nbproject
-/out
+/out/production
+/dist
 *.iml
 *.mf
 *.xml
