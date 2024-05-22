@@ -76,6 +76,7 @@ public class MovimentarProduto extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         Produtos = new javax.swing.JTable();
 
+        setTitle("Movimentar Produto");
         setResizable(false);
 
         PesquisaProduto.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -209,6 +210,7 @@ public class MovimentarProduto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Produtos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Produtos.getTableHeader().setReorderingAllowed(false);
         Produtos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -293,10 +295,10 @@ public class MovimentarProduto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_PesquisaProdutoActionPerformed
 
-    private void searchTable(String searchText) {
+    private void procurarProduto(String texto) {
         TableRowSorter<DefaultTableModel> rowSorter = new TableRowSorter<>(modeloTabela);
         Produtos.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
+        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + texto));
     }
     
     private void ConfirmarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarBotaoActionPerformed
@@ -345,7 +347,7 @@ public class MovimentarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_PesquisaProdutoKeyTyped
 
     private void PesquisaProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PesquisaProdutoKeyReleased
-        searchTable(PesquisaProduto.getText());
+        procurarProduto(PesquisaProduto.getText());
     }//GEN-LAST:event_PesquisaProdutoKeyReleased
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -356,16 +358,25 @@ public class MovimentarProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_QuantidadeSelecaoKeyReleased
 
+    public static Produto procurarPeloId(java.util.List<Produto> produtos, int id) {
+        for (Produto produto : produtos) {
+            if (produto.getId_produto() == id) {
+                return produto;
+            }
+        }
+        return null;
+    }
+    
     private void ProdutosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdutosMouseReleased
         if (this.Produtos.getSelectedRow() >= 0) {
-            int selecionado = this.Produtos.getSelectedRow();
-            produtoSelecionado = produtos.get(selecionado);
+            int idSelecionado = Integer.parseInt(Produtos.getValueAt(Produtos.getSelectedRow(), 0).toString());
+            produtoSelecionado = procurarPeloId(produtos, idSelecionado);
             
-            this.NomeProduto.setText(produtoSelecionado.getNome_produto());
-            this.EstoqueTotal.setText(Integer.toString(produtoSelecionado.getQuantidade_estoque()));
+            NomeProduto.setText(produtoSelecionado.getNome_produto());
+            EstoqueTotal.setText(Integer.toString(produtoSelecionado.getQuantidade_estoque()));
         } else {
-            this.NomeProduto.setText("Produto Selecionado");
-            this.EstoqueTotal.setText("0000");
+            NomeProduto.setText("Produto Selecionado");
+            EstoqueTotal.setText("0000");
         }
         
         verificarCampos();
