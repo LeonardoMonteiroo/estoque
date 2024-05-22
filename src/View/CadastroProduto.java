@@ -25,7 +25,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -236,66 +236,46 @@ public class CadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void Field_NomeDoProdutoKeyReleased(java.awt.event.KeyEvent evt) {
-        if (Field_NomeDoProduto.getText().trim().length() > 0 &&
-                Field_DescricaoDoProduto.getText().trim().length() > 0 &&
-                Field_Preco.getText().trim().length() > 0 &&
-                (AdicionarEstoque.isSelected() == false || Field_QuantidadeEmEstoque.getText().trim().length() > 0)) {
-            Buttom_Confirmar.setEnabled(true);
-        } else {
-            Buttom_Confirmar.setEnabled(false);
-        }
+        Buttom_Confirmar.setEnabled(!Field_NomeDoProduto.getText().trim().isEmpty() &&
+                !Field_DescricaoDoProduto.getText().trim().isEmpty() &&
+                !Field_Preco.getText().trim().isEmpty() &&
+                (!AdicionarEstoque.isSelected() || !Field_QuantidadeEmEstoque.getText().trim().isEmpty()));
     }
 
     private void Field_DescricaoDoProdutoKeyReleased(java.awt.event.KeyEvent evt) {
-        if (Field_NomeDoProduto.getText().trim().length() > 0 &&
-                Field_DescricaoDoProduto.getText().trim().length() > 0 &&
-                Field_Preco.getText().trim().length() > 0 &&
-                (AdicionarEstoque.isSelected() == false || Field_QuantidadeEmEstoque.getText().trim().length() > 0)) {
-            Buttom_Confirmar.setEnabled(true);
-        } else {
-            Buttom_Confirmar.setEnabled(false);
-        }
+        Buttom_Confirmar.setEnabled(!Field_NomeDoProduto.getText().trim().isEmpty() &&
+                !Field_DescricaoDoProduto.getText().trim().isEmpty() &&
+                !Field_Preco.getText().trim().isEmpty() &&
+                (!AdicionarEstoque.isSelected() || !Field_QuantidadeEmEstoque.getText().trim().isEmpty()));
     }
 
     private void Field_PrecoKeyReleased(java.awt.event.KeyEvent evt) {
-        if (Field_NomeDoProduto.getText().trim().length() > 0 &&
-                Field_DescricaoDoProduto.getText().trim().length() > 0 &&
-                Field_Preco.getText().trim().length() > 0 &&
-                (AdicionarEstoque.isSelected() == false || Field_QuantidadeEmEstoque.getText().trim().length() > 0)) {
-            Buttom_Confirmar.setEnabled(true);
-        } else {
-            Buttom_Confirmar.setEnabled(false);
-        }
+        Buttom_Confirmar.setEnabled(!Field_NomeDoProduto.getText().trim().isEmpty() &&
+                !Field_DescricaoDoProduto.getText().trim().isEmpty() &&
+                !Field_Preco.getText().trim().isEmpty() &&
+                (!AdicionarEstoque.isSelected() || !Field_QuantidadeEmEstoque.getText().trim().isEmpty()));
     }
 
     private void Field_QuantidadeEmEstoqueKeyReleased(java.awt.event.KeyEvent evt) {
-        if (Field_NomeDoProduto.getText().trim().length() > 0 &&
-                Field_DescricaoDoProduto.getText().trim().length() > 0 &&
-                Field_Preco.getText().trim().length() > 0 &&
-                (AdicionarEstoque.isSelected() == false || Field_QuantidadeEmEstoque.getText().trim().length() > 0)) {
-            Buttom_Confirmar.setEnabled(true);
-        } else {
-            Buttom_Confirmar.setEnabled(false);
-        }
+        Buttom_Confirmar.setEnabled(!Field_NomeDoProduto.getText().trim().isEmpty() &&
+                !Field_DescricaoDoProduto.getText().trim().isEmpty() &&
+                !Field_Preco.getText().trim().isEmpty() &&
+                (!AdicionarEstoque.isSelected() || !Field_QuantidadeEmEstoque.getText().trim().isEmpty()));
     }
 
     private void AdicionarEstoqueMouseReleased(java.awt.event.MouseEvent evt) {
 
-        if (Field_QuantidadeEmEstoque.isEditable() == false) {
+        if (!Field_QuantidadeEmEstoque.isEditable()) {
             Field_QuantidadeEmEstoque.setEditable(true);
         } else {
             Field_QuantidadeEmEstoque.setEditable(false);
             Field_QuantidadeEmEstoque.setText(null);
         }
 
-        if (Field_NomeDoProduto.getText().trim().length() > 0 &&
-                Field_DescricaoDoProduto.getText().trim().length() > 0 &&
-                Field_Preco.getText().trim().length() > 0 &&
-                (AdicionarEstoque.isSelected() == false || Field_QuantidadeEmEstoque.getText().trim().length() > 0)) {
-            Buttom_Confirmar.setEnabled(true);
-        } else {
-            Buttom_Confirmar.setEnabled(false);
-        }
+        Buttom_Confirmar.setEnabled(!Field_NomeDoProduto.getText().trim().isEmpty() &&
+                !Field_DescricaoDoProduto.getText().trim().isEmpty() &&
+                !Field_Preco.getText().trim().isEmpty() &&
+                (!AdicionarEstoque.isSelected() || !Field_QuantidadeEmEstoque.getText().trim().isEmpty()));
     }
     // End of variables declaration
 }
