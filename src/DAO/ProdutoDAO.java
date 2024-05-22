@@ -136,17 +136,16 @@ public class ProdutoDAO {
     //Edita um produto específico pelo seu campo ID
     public boolean UpdateProdutoBD(Produto objeto) {
 
-        String sql = "UPDATE tb_produto set nome_produto = ?, descricao_produto = ?, quantidade_estoque = ?, preco = ?, data_cadastro = ? WHERE id_produto = ?";
+        String sql = "UPDATE tb_produto set nome_produto = ?, descricao_produto = ?, quantidade_estoque = ?, preco = ? WHERE id_produto = ?";
 
         try {
             PreparedStatement stmt = this.getConnection().prepareStatement(sql);
 
-            stmt.setInt(1, objeto.getId_produto());
-            stmt.setString(2, objeto.getNome_produto());
-            stmt.setString(3, objeto.getDescricao_produto());
-            stmt.setInt(4, objeto.getQuantidade_estoque());
-            stmt.setFloat(5, objeto.getPreco());
-            stmt.setDate(6, new java.sql.Date(objeto.getData_cadastro().getTime()));
+            stmt.setString(1, objeto.getNome_produto());
+            stmt.setString(2, objeto.getDescricao_produto());
+            stmt.setInt(3, objeto.getQuantidade_estoque());
+            stmt.setFloat(4, objeto.getPreco());
+            stmt.setInt(5, objeto.getId_produto());
 
             stmt.execute();
             stmt.close();

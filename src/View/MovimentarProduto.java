@@ -19,11 +19,10 @@ public class MovimentarProduto extends javax.swing.JFrame {
     private java.util.List<Produto> produtos;
     private Produto produtoSelecionado;
     private DefaultTableModel modeloTabela;
-    /**
-     * Creates new form MovimentarProduto
-     */
+    
     public MovimentarProduto() {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.prepararProdutos();
     }
     
@@ -38,6 +37,19 @@ public class MovimentarProduto extends javax.swing.JFrame {
             modeloTabela.addRow(new Object[]{produto.getId_produto(), produto.getNome_produto()});
         }
     }
+    
+    private void verificarCampos() {
+        Boolean idValido = produtoSelecionado != null && produtoSelecionado.getId_produto() > 0;
+        Boolean tipoSelecionado = jRadioButton1.isSelected() || jRadioButton2.isSelected();
+        Boolean quantidadeValida = (Integer) QuantidadeSelecao.getValue() > 0;
+        
+        if (idValido && tipoSelecionado && quantidadeValida) {
+            ConfirmarBotao.setEnabled(true);
+        } else {
+            ConfirmarBotao.setEnabled(false);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,7 +76,6 @@ public class MovimentarProduto extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         Produtos = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         PesquisaProduto.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -93,6 +104,11 @@ public class MovimentarProduto extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Entrada");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Saída");
@@ -113,6 +129,11 @@ public class MovimentarProduto extends javax.swing.JFrame {
                 QuantidadeSelecaoStateChanged(evt);
             }
         });
+        QuantidadeSelecao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                QuantidadeSelecaoKeyReleased(evt);
+            }
+        });
 
         CancelarBotao.setText("Cancelar");
         CancelarBotao.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +143,7 @@ public class MovimentarProduto extends javax.swing.JFrame {
         });
 
         ConfirmarBotao.setText("Confirmar");
+        ConfirmarBotao.setEnabled(false);
         ConfirmarBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfirmarBotaoActionPerformed(evt);
@@ -192,6 +214,9 @@ public class MovimentarProduto extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ProdutosMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ProdutosMouseReleased(evt);
+            }
         });
         jScrollPane6.setViewportView(Produtos);
         if (Produtos.getColumnModel().getColumnCount() > 0) {
@@ -261,7 +286,7 @@ public class MovimentarProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
+        verificarCampos();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void PesquisaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisaProdutoActionPerformed
@@ -271,11 +296,30 @@ public class MovimentarProduto extends javax.swing.JFrame {
     private void searchTable(String searchText) {
         TableRowSorter<DefaultTableModel> rowSorter = new TableRowSorter<>(modeloTabela);
         Produtos.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText)); // Case-insensitive search
+        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
     }
     
     private void ConfirmarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarBotaoActionPerformed
+        ProdutoDAO conexao = new ProdutoDAO();
+        conexao.getConnection();
         
+        int novoEstoque = produtoSelecionado.getQuantidade_estoque();
+        
+        if (jRadioButton1.isSelected()) {
+            novoEstoque += (int) QuantidadeSelecao.getValue();
+        } else if (jRadioButton2.isSelected()) {
+            novoEstoque -= (int) QuantidadeSelecao.getValue();
+        }
+        
+        produtoSelecionado.setQuantidade_estoque(novoEstoque);
+        conexao.UpdateProdutoBD(produtoSelecionado);
+        
+        buttonGroup1.clearSelection();
+        QuantidadeSelecao.setValue(0);
+        Produtos.clearSelection();
+        
+        this.NomeProduto.setText("Produto Selecionado");
+        this.EstoqueTotal.setText("0000");
     }//GEN-LAST:event_ConfirmarBotaoActionPerformed
 
     private void CancelarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarBotaoActionPerformed
@@ -283,22 +327,11 @@ public class MovimentarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarBotaoActionPerformed
 
     private void ProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdutosMouseClicked
-        
-        if (this.Produtos.getSelectedRow() != -1) {
 
-            int selecionado = this.Produtos.getSelectedRow();
-            produtoSelecionado = produtos.get(selecionado);
-            
-            this.NomeProduto.setText(produtoSelecionado.getNome_produto());
-            this.EstoqueTotal.setText(Integer.toString(produtoSelecionado.getQuantidade_estoque()));
-        } else {
-            this.NomeProduto.setText("Produto Selecionado");
-            this.EstoqueTotal.setText("0000");
-        }
     }//GEN-LAST:event_ProdutosMouseClicked
 
     private void QuantidadeSelecaoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_QuantidadeSelecaoStateChanged
-
+        verificarCampos();
     }//GEN-LAST:event_QuantidadeSelecaoStateChanged
 
     private void PesquisaProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PesquisaProdutoKeyPressed
@@ -312,9 +345,31 @@ public class MovimentarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_PesquisaProdutoKeyTyped
 
     private void PesquisaProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PesquisaProdutoKeyReleased
-        // TODO add your handling code here:
         searchTable(PesquisaProduto.getText());
     }//GEN-LAST:event_PesquisaProdutoKeyReleased
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        verificarCampos();
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void QuantidadeSelecaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QuantidadeSelecaoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_QuantidadeSelecaoKeyReleased
+
+    private void ProdutosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdutosMouseReleased
+        if (this.Produtos.getSelectedRow() >= 0) {
+            int selecionado = this.Produtos.getSelectedRow();
+            produtoSelecionado = produtos.get(selecionado);
+            
+            this.NomeProduto.setText(produtoSelecionado.getNome_produto());
+            this.EstoqueTotal.setText(Integer.toString(produtoSelecionado.getQuantidade_estoque()));
+        } else {
+            this.NomeProduto.setText("Produto Selecionado");
+            this.EstoqueTotal.setText("0000");
+        }
+        
+        verificarCampos();
+    }//GEN-LAST:event_ProdutosMouseReleased
 
     /**
      * @param args the command line arguments
@@ -344,10 +399,8 @@ public class MovimentarProduto extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MovimentarProduto().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MovimentarProduto().setVisible(true);
         });
     }
 

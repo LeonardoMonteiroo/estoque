@@ -4,6 +4,9 @@
  */
 package View;
 
+import java.awt.GraphicsEnvironment;
+import javax.swing.JFrame;
+
 /**
  *
  * @author leonardomonteiro
@@ -15,6 +18,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setSize(env.getMaximumWindowBounds().getSize());
     }
 
     /**
