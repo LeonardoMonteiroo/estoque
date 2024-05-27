@@ -52,6 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Estoque");
 
         jMenu4.setText("Produto");
 
