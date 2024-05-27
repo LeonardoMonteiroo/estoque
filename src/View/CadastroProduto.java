@@ -244,7 +244,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_Field_NomeDoProdutoActionPerformed
 
     private void Buttom_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buttom_CancelarActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_Buttom_CancelarActionPerformed
 
@@ -263,8 +262,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_AdicionarEstoqueActionPerformed
 
     private void Buttom_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buttom_ConfirmarActionPerformed
-        // TODO add your handling code here:
-
         try {
             int id = 0;
             String nome = "";
@@ -289,8 +286,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_Buttom_ConfirmarActionPerformed
 
     private void Field_NomeDoProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Field_NomeDoProdutoKeyReleased
