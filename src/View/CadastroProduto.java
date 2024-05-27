@@ -1,5 +1,6 @@
 package View;
 
+import Model.Produto;
 import Utils.MaxChar;
 
 /**
@@ -21,8 +22,11 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel QuantidadeEmEstoque;
     private javax.swing.JScrollPane Scroll_DescricaoDoProduto;
 
+    private Produto objproduto; 
+      
     public CadastroProduto() {
         initComponents();
+        this.objproduto = new Produto();
     }
 
     public static void main(String args[]) {
@@ -297,5 +301,4 @@ public class CadastroProduto extends javax.swing.JFrame {
             Buttom_Confirmar.setEnabled(false);
         }
     }
-    // End of variables declaration
 }

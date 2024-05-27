@@ -82,7 +82,7 @@ public class Produto {
     }
     //Fim dos métodos getters e setters
 
-    //
+    // Retorna a Lista de Produtos(objetos)
     public ArrayList getProdutosList() {
         return dao.getProdutosList();
     }
@@ -107,7 +107,7 @@ public class Produto {
     }
 
     //Edita um produto específico pelo seu campo ID
-    public boolean UpdateAlunoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, Date data_cadastro) {
+    public boolean UpdateProdutoBD(int id_produto, String nome_produto, String descricao_produto, int quantidade_estoque, float preco, Date data_cadastro) {
         Produto objeto = new Produto(id_produto, nome_produto, descricao_produto, quantidade_estoque, preco, data_cadastro);
         dao.UpdateProdutoBD(objeto);
         return true;

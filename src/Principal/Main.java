@@ -8,9 +8,5 @@ public class Main {
         TelaPrincipal objetoTela = new TelaPrincipal();
         objetoTela.setVisible(true);
 
-
-
-
-
     }
 }
