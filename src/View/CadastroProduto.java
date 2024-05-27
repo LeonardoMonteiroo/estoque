@@ -57,7 +57,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         AdicionarEstoque = new javax.swing.JCheckBox();
         Buttom_Confirmar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Produto");
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
