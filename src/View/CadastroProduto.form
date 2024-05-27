@@ -37,11 +37,11 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="80" max="32767" attributes="0"/>
-              <Component id="Buttom_Cancelar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
-              <Component id="Buttom_Confirmar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Buttom_Cancelar" min="-2" pref="91" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Buttom_Confirmar" min="-2" pref="91" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
                       <Component id="QuantidadeEmEstoque" min="-2" pref="137" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="AdicionarEstoque" min="-2" pref="136" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="88" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -98,12 +98,21 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="Field_QuantidadeEmEstoque">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new JustINT()" type="code"/>
+        </Property>
+      </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="jTextField_QuantidadeEmEstoque"/>
         <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="Field_QuantidadeEmEstoque"/>
         </Property>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Field_QuantidadeEmEstoqueKeyReleased"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="Scroll_DescricaoDoProduto">
       <Properties>
@@ -129,6 +138,9 @@
         <Component class="javax.swing.JTextArea" name="Field_DescricaoDoProduto">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new MaxChar(255)" type="code"/>
+            </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="tabSize" type="int" value="0"/>
@@ -144,13 +156,19 @@
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="" postCode="Field_DescricaoDoProduto.setDocument(new MaxChar(255));"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Field_DescricaoDoProdutoKeyReleased"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="Field_NomeDoProduto">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new MaxChar(50)" type="code"/>
+        </Property>
         <Property name="toolTipText" type="java.lang.String" value="M&#xe1;ximo de 50 caracteres"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="null"/>
@@ -162,16 +180,18 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
-        <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor" postCode="Field_NomeDoProduto.setDocument(new MaxChar(50));">
-          <ComponentRef name="default"/>
-        </Property>
       </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Field_NomeDoProdutoActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Field_NomeDoProdutoKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Field_Preco">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new RealFormat()" type="code"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="R$ 0,00"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="null"/>
         </Property>
@@ -274,6 +294,7 @@
     <Component class="javax.swing.JButton" name="Buttom_Confirmar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirmar"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <AccessibilityProperties>
