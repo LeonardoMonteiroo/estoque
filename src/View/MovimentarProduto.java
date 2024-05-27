@@ -28,7 +28,6 @@ public class MovimentarProduto extends javax.swing.JFrame {
     
     private void prepararProdutos () {
         ProdutoDAO conexao = new ProdutoDAO();
-        conexao.getConnection();
         produtos = conexao.getProdutosList();
         
         modeloTabela = (DefaultTableModel) Produtos.getModel();
@@ -303,7 +302,6 @@ public class MovimentarProduto extends javax.swing.JFrame {
     
     private void ConfirmarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarBotaoActionPerformed
         ProdutoDAO conexao = new ProdutoDAO();
-        conexao.getConnection();
         
         int novoEstoque = produtoSelecionado.getQuantidade_estoque();
         
