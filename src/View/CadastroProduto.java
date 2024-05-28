@@ -271,7 +271,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
             nome = this.Field_NomeDoProduto.getText().trim();
             descricao = this.Field_DescricaoDoProduto.getText().trim();
-            preco = Integer.parseInt(this.Field_Preco.getText().replaceAll("[^0-9]", ""));
+            preco = Integer.parseInt(this.Field_Preco.getText().replaceAll("[^0-9]", ""))/100;
             quantidade = Integer.parseInt(this.Field_QuantidadeEmEstoque.getText());
 
             this.objProduto.InsertProdutoBD(id, nome, descricao, quantidade, preco, getDataAtual());
@@ -279,7 +279,7 @@ public class CadastroProduto extends javax.swing.JFrame {
             this.Field_NomeDoProduto.setText("");
             this.Field_DescricaoDoProduto.setText("");
             this.Field_Preco.setText("R$ 0,00");
-            this.QuantidadeEmEstoque.setText("");
+            this.Field_QuantidadeEmEstoque.setText("");
 
         } catch (NumberFormatException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
