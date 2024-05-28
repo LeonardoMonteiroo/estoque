@@ -27,7 +27,7 @@ public class ProdutoDAO {
             String database = "db_a3";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "ursao322putasso";
+            String password = "root";
 
             connection = DriverManager.getConnection(url, user, password);
 
@@ -81,7 +81,7 @@ public class ProdutoDAO {
         int maiorID = 0;
         try {
             Statement stmt = this.getConnection().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT MAX(id_produto) id FROM tb_produto");
+            ResultSet res = stmt.executeQuery("SELECT MAX(id_produto) id_produto FROM tb_produto");
             res.next();
             maiorID = res.getInt("id_produto");
 

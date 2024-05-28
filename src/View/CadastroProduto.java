@@ -271,8 +271,10 @@ public class CadastroProduto extends javax.swing.JFrame {
 
             nome = this.Field_NomeDoProduto.getText().trim();
             descricao = this.Field_DescricaoDoProduto.getText().trim();
-            preco = Integer.parseInt(this.Field_Preco.getText().replaceAll("[^0-9]", ""))/100;
-            quantidade = Integer.parseInt(this.Field_QuantidadeEmEstoque.getText());
+            preco = Float.parseFloat(this.Field_Preco.getText().replaceAll("[^0-9]", "")) / 100;
+            if (Field_QuantidadeEmEstoque.isEditable()) {
+                quantidade = Integer.parseInt(this.Field_QuantidadeEmEstoque.getText());
+            }
 
             this.objProduto.InsertProdutoBD(id, nome, descricao, quantidade, preco, getDataAtual());
 
