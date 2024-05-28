@@ -36,13 +36,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        GerenciamentodeProdutos = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        MovimentarProdutoBotao = new javax.swing.JButton();
+        CadastrarProdutoBotao = new javax.swing.JButton();
+        GerenciarProdutoBotao = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -55,80 +51,69 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
 
-        jMenu4.setText("Produto");
-
-        jMenuItem5.setText("Cadastrar Produtos");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        MovimentarProdutoBotao.setText("Movimentar Produtos");
+        MovimentarProdutoBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                MovimentarProdutoBotaoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
 
-        GerenciamentodeProdutos.setText("Gerenciar Produtos");
-        GerenciamentodeProdutos.addActionListener(new java.awt.event.ActionListener() {
+        CadastrarProdutoBotao.setText("Cadastrar Produtos");
+        CadastrarProdutoBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GerenciamentodeProdutosActionPerformed(evt);
+                CadastrarProdutoBotaoActionPerformed(evt);
             }
         });
-        jMenu4.add(GerenciamentodeProdutos);
 
-        jMenuItem2.setText("Movimentar Produto");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        GerenciarProdutoBotao.setText("Gerenciar Produtos");
+        GerenciarProdutoBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                GerenciarProdutoBotaoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem2);
-
-        jMenuItem4.setText("Sair");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem4);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Relatórios");
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(CadastrarProdutoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(GerenciarProdutoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(MovimentarProdutoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MovimentarProdutoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CadastrarProdutoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GerenciarProdutoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void MovimentarProdutoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MovimentarProdutoBotaoActionPerformed
         MovimentarProduto movimentarProduto = new MovimentarProduto();
         movimentarProduto.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_MovimentarProdutoBotaoActionPerformed
 
-    private void GerenciamentodeProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciamentodeProdutosActionPerformed
+    private void GerenciarProdutoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarProdutoBotaoActionPerformed
         GerenciaProduto objeto = new GerenciaProduto();
-        objeto.setVisible(true);
-    }//GEN-LAST:event_GerenciamentodeProdutosActionPerformed
+        objeto.setVisible(true);           
+    }//GEN-LAST:event_GerenciarProdutoBotaoActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void CadastrarProdutoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarProdutoBotaoActionPerformed
         CadastroProduto objeto = new CadastroProduto();
         objeto.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_CadastrarProdutoBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,17 +151,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem GerenciamentodeProdutos;
+    private javax.swing.JButton CadastrarProdutoBotao;
+    private javax.swing.JButton GerenciarProdutoBotao;
+    private javax.swing.JButton MovimentarProdutoBotao;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     // End of variables declaration//GEN-END:variables
