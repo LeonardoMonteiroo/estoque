@@ -26,8 +26,8 @@ public class ProdutoDAO {
             String server = "localhost";
             String database = "db_a3";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
-            String user = "Paulo";
-            String password = "aluizio12";
+            String user = "root";
+            String password = "ursao322putasso";
 
             connection = DriverManager.getConnection(url, user, password);
 

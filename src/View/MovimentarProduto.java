@@ -6,6 +6,7 @@ package View;
 
 import DAO.ProdutoDAO;
 import Model.Produto;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -301,25 +302,29 @@ public class MovimentarProduto extends javax.swing.JFrame {
     }
     
     private void ConfirmarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarBotaoActionPerformed
-        ProdutoDAO conexao = new ProdutoDAO();
-        
-        int novoEstoque = produtoSelecionado.getQuantidade_estoque();
-        
-        if (jRadioButton1.isSelected()) {
-            novoEstoque += (int) QuantidadeSelecao.getValue();
-        } else if (jRadioButton2.isSelected()) {
-            novoEstoque -= (int) QuantidadeSelecao.getValue();
-        }
-        
-        produtoSelecionado.setQuantidade_estoque(novoEstoque);
-        conexao.UpdateProdutoBD(produtoSelecionado);
-        
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+    
+    int novoEstoque = produtoSelecionado.getQuantidade_estoque();
+    
+    if (jRadioButton1.isSelected()) {
+        novoEstoque += (int) QuantidadeSelecao.getValue();
+    } else if (jRadioButton2.isSelected()) {
+        novoEstoque -= (int) QuantidadeSelecao.getValue();
+    }
+
+    // Atualizar os campos do produto com os novos valores
+    produtoSelecionado.setQuantidade_estoque(novoEstoque);
+
+    // Chamar o método UpdateProdutoBD com o objeto Produto
+    if (produtoDAO.UpdateProdutoBD(produtoSelecionado)) {
+        // Se a atualização for bem-sucedida, limpe os campos e exiba uma mensagem de sucesso
+        this.NomeProduto.setText("Produto Selecionado");
+        this.EstoqueTotal.setText("0000");
         buttonGroup1.clearSelection();
         QuantidadeSelecao.setValue(0);
         Produtos.clearSelection();
-        
-        this.NomeProduto.setText("Produto Selecionado");
-        this.EstoqueTotal.setText("0000");
+        JOptionPane.showMessageDialog(rootPane, "Produto Alterado com Sucesso!");
+    }
     }//GEN-LAST:event_ConfirmarBotaoActionPerformed
 
     private void CancelarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarBotaoActionPerformed

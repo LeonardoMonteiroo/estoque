@@ -4,7 +4,10 @@
  */
 package View;
 
+import DAO.ProdutoDAO;
 import Model.Produto;
+import Utils.MaxChar;
+import Utils.RealFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -42,10 +45,11 @@ public class GerenciaProduto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         c_nome = new javax.swing.JTextField();
-        c_descricao = new javax.swing.JTextField();
         c_preco = new javax.swing.JTextField();
         Estoque = new javax.swing.JLabel();
         c_estoque = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        c_descricao = new javax.swing.JTextArea();
 
         setTitle("Gerenciamento de Produtos");
 
@@ -109,31 +113,34 @@ public class GerenciaProduto extends javax.swing.JFrame {
 
         jLabel3.setText("Preço:");
 
+        c_nome.setDocument(new MaxChar(50));
         c_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_nomeActionPerformed(evt);
             }
         });
 
-        c_descricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_descricaoActionPerformed(evt);
-            }
-        });
-
+        c_preco.setDocument(new RealFormat());
+        c_preco.setText("R$ 0,00");
         c_preco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_precoActionPerformed(evt);
             }
         });
 
-        Estoque.setText("Estoque");
+        Estoque.setText("Estoque:");
 
         c_estoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_estoqueActionPerformed(evt);
             }
         });
+
+        c_descricao.setColumns(20);
+        c_descricao.setDocument(new MaxChar(255));
+        c_descricao.setLineWrap(true);
+        c_descricao.setTabSize(0);
+        jScrollPane2.setViewportView(c_descricao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,7 +150,7 @@ public class GerenciaProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(119, 119, 119)
                                 .addComponent(b_cancelar)
@@ -154,12 +161,12 @@ public class GerenciaProduto extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(c_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(c_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Estoque)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(c_estoque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                .addComponent(c_preco, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(c_preco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                .addComponent(c_estoque, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -176,10 +183,10 @@ public class GerenciaProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(c_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addComponent(c_preco, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Estoque)
@@ -198,12 +205,62 @@ public class GerenciaProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_b_cancelarActionPerformed
 
     private void b_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_alterarActionPerformed
+                                               
+    try {
+        int id = 0;
+        String nome = "";
+        String descricao = "";
+        float preco = 0;
+        int estoque = 0;
+
+        nome = this.c_nome.getText().trim();
+        descricao = this.c_descricao.getText().trim();
+        preco = Float.parseFloat(this.c_preco.getText().replaceAll("[^0-9]", "")) / 100;
+        estoque = Integer.parseInt(this.c_estoque.getText());
+
+        if (this.jTableProdutos.getSelectedRow() == -1) {
+            throw new Mensagens("Primeiro Selecione um Produto para Alterar");
+        } else {
+            id = Integer.parseInt(this.jTableProdutos.getValueAt(this.jTableProdutos.getSelectedRow(), 0).toString());
+        }
         
-       
+         ProdutoDAO produtoDAO = new ProdutoDAO();
+
+        // Obter o produto a ser atualizado do DAO
+        Produto produto = produtoDAO.getProduto(id);
+
+        // Atualizar os campos do produto com os novos valores
+        produto.setNome_produto(nome);
+        produto.setDescricao_produto(descricao);
+        produto.setPreco(preco);
+        produto.setQuantidade_estoque(estoque);
+        
+        if (produtoDAO.UpdateProdutoBD(produto)) {
+            // Se a atualização for bem-sucedida, limpe os campos e exiba uma mensagem de sucesso
+            this.c_nome.setText("");
+            this.c_descricao.setText("");
+            this.c_preco.setText("R$ 0,00");
+            this.c_estoque.setText("");
+            JOptionPane.showMessageDialog(rootPane, "Produto Alterado com Sucesso!");
+        }
+        
+        // Atualize a tabela após a alteração
+        carregaTabela();
+        
+    } catch (Mensagens erro) {
+        JOptionPane.showMessageDialog(null, erro.getMessage());
+    } catch (NumberFormatException erro2) {
+        JOptionPane.showMessageDialog(null, "Informe um número.");
+    } finally {
+        // Atualize a tabela mesmo se ocorrer um erro
+        carregaTabela();
+    }
+
+
         
     }//GEN-LAST:event_b_alterarActionPerformed
 
@@ -215,10 +272,6 @@ public class GerenciaProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_c_precoActionPerformed
 
-    private void c_descricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_descricaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_descricaoActionPerformed
-
     private void jTableProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProdutosMouseClicked
         if (this.jTableProdutos.getSelectedRow() != -1) {
 
@@ -227,10 +280,13 @@ public class GerenciaProduto extends javax.swing.JFrame {
             String preco = this.jTableProdutos.getValueAt(this.jTableProdutos.getSelectedRow(), 3).toString();
             String estoque = this.jTableProdutos.getValueAt(this.jTableProdutos.getSelectedRow(), 4).toString();
             
+            // Dividir o preço por 100 para exibir corretamente
+            float precoFloat = Float.parseFloat(preco) / 1000;
+            String precoFormatado = String.format("%.2f", precoFloat); // Formatar para duas casas decimais
 
             this.c_nome.setText(nome);
             this.c_descricao.setText(descricao);
-            this.c_preco.setText(preco);
+            this.c_preco.setText(precoFormatado);
             this.c_estoque.setText(estoque);
     }//GEN-LAST:event_jTableProdutosMouseClicked
 }
@@ -339,7 +395,7 @@ public class GerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JButton b_alterar;
     private javax.swing.JButton b_apagar;
     private javax.swing.JButton b_cancelar;
-    private javax.swing.JTextField c_descricao;
+    private javax.swing.JTextArea c_descricao;
     private javax.swing.JTextField c_estoque;
     private javax.swing.JTextField c_nome;
     private javax.swing.JTextField c_preco;
@@ -347,6 +403,7 @@ public class GerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableProdutos;
     // End of variables declaration//GEN-END:variables
 }
